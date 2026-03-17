@@ -1,0 +1,58 @@
+/* ===== BASE ===== */
+.root {
+    -fx-background-color: #0f172a;
+    -fx-font-family: "Segoe UI", "Inter", sans-serif;
+}
+
+/* ===== SCROLL PANES ===== */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-bar:vertical,
+.scroll-bar:horizontal {
+    -fx-background-color: #1e293b;
+}
+.scroll-bar .thumb {
+    -fx-background-color: #334155;
+    -fx-background-radius: 4;
+}
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+/* ===== SEPARADORES ===== */
+.separator .line {
+    -fx-border-color: #334155;
+}
+
+/* ===== DIALOGS ===== */
+.dialog-pane {
+    -fx-background-color: #1e293b;
+}
+.dialog-pane .header-panel {
+    -fx-background-color: #0f172a;
+}
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #f1f5f9;
+}
+.dialog-pane .content.label {
+    -fx-text-fill: #cbd5e1;
+}
+.dialog-pane .button-bar .button {
+    -fx-background-color: #334155;
+    -fx-text-fill: #f1f5f9;
+    -fx-background-radius: 6;
+}
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #f8a000;
+    -fx-text-fill: #0f172a;
+}
