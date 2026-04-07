@@ -38,17 +38,19 @@ public class Protocol {
 
                 if (s == null || s.isFinalizado()) return "ERRO Leilão finalizado.";
 
-                if (s.registrarLance(new Lance(valor, nome))) {
-                    int salaId = handler.getSalaAtual();
-                    // Atualiza preço do card para todos
-                    ClientManager.broadcastAll("NOVO_VALOR " + salaId + " " + valor);
-                    // Reseta timer visualmente
-                    ClientManager.broadcastAll("TEMPO " + salaId + " 60");
-                    // Notificação no chat lateral
-                    ClientManager.broadcastAll("MSG " + salaId + " 📢 " + nome + " deu R$" + valor + " em " + s.getItem().getNome());
-                    return "SUCESSO Lance registrado!";
-                } else {
-                    return "NEGADO Lance abaixo do atual ou leilão encerrado.";
+                synchronized (this) {
+                    if (s.registrarLance(new Lance(valor, nome))) {
+                        int salaId = handler.getSalaAtual();
+                        // Atualiza preço do card para todos
+                        ClientManager.broadcastAll("NOVO_VALOR " + salaId + " " + valor);
+                        // Reseta timer visualmente
+                        ClientManager.broadcastAll("TEMPO " + salaId + " 60");
+                        // Notificação no chat lateral
+                        ClientManager.broadcastAll("MSG " + salaId + " 📢 " + nome + " deu R$" + valor + " em " + s.getItem().getNome());
+                        return "SUCESSO Lance registrado!";
+                    } else {
+                        return "NEGADO Lance abaixo do atual ou leilão encerrado.";
+                    }   
                 }
             } catch (Exception e) {
                 return "ERRO Formato: LANCE <nome> <valor>";
