@@ -7,7 +7,7 @@ import java.util.TimerTask;
 public class Sala {
     private Item item;
     private Lance maiorLance;
-    private int tempoRestante = 60;
+    private int tempoRestante = 120;
     private boolean leilaoFinalizado = false;
     private Timer timer;
 
@@ -43,7 +43,7 @@ public class Sala {
 
     private void resetarTimer() {
         timer.cancel();
-        tempoRestante = 60;
+        tempoRestante = 120;
         iniciarTimer();
     }
 
