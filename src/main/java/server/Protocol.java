@@ -38,7 +38,7 @@ public class Protocol {
 
                 if (s == null || s.isFinalizado()) return "ERRO Leilão finalizado.";
 
-                synchronized (this) {
+                synchronized (Protocol.class) {
                     if (s.registrarLance(new Lance(valor, nome))) {
                         int salaId = handler.getSalaAtual();
                         // Atualiza preço do card para todos
@@ -50,7 +50,7 @@ public class Protocol {
                         return "SUCESSO Lance registrado!";
                     } else {
                         return "NEGADO Lance abaixo do atual ou leilão encerrado.";
-                    }   
+                    }  
                 }
             } catch (Exception e) {
                 return "ERRO Formato: LANCE <nome> <valor>";
